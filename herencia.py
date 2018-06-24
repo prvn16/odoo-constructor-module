@@ -5,14 +5,14 @@ import sys
 import os
 
 print "#################################################################"
-print "# Herencia es una aplicacion para generar Modulo para Odoo      #"
-print "# www.falconsolutions.cl                                        #"
-print "# Autor: Marlon Falcon Herandez                                 #"
-print "# mail: mfalcon@falconsolutions.cl                              #"
+print "# Inherit from Odoo module      #"
+print "# www.sumpurn.com                                       #"
+print "# Autor: Dr. Bhatia Praveen                                 #"
+print "# mail: praveen.bhatia@sumpurn.com                              #"
 print "#################################################################"
 
-# Entramos el nombre del módulo
-name = raw_input("Entre el Nombre del Modulo a Heredar:")
+# Enter modules name
+name = raw_input("Enter modules name:")
 module = name
 name = name.replace(".", '_')
 name = "herencia_" + name
@@ -131,7 +131,7 @@ file.write('    </record> \n')
 file.write('</odoo> \n')
 file.close()
 
-print "Se a creado el Modulo:" + name
+print "Created the module:" + name
 
 
 

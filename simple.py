@@ -11,63 +11,48 @@ print "# Autor: Marlon Falcon Herandez                                 #"
 print "# mail: mfalcon@falconsolutions.cl                              #"
 print "#################################################################"
 
-# Entramos el nombre del módulo
-name = raw_input("Entre el Nombre del Modulo:")
-cant_campos = int(raw_input("Cantidad de Campos:"))
+# Enter the name of the module:
+name = raw_input("Enter the name of the module:")
+noOfFields = int( raw_input( "Number of fields:" ) )
 print ""
-print "###############  Campos  ##############################"
+print "###############  Fields  ##############################"
 print ""
 print ""
-# Creamos la carpeta del módulo
+# Create the module
 os.makedirs(name)
 os.makedirs(name+"/views")
 os.makedirs(name+"/models")
 
-# Creamos los ficheros en la raiz
-# Creamos el __init__.py
+# Create the files
+# Create __init__.py
 file = open(name + '/__init__.py','w')
 file.write('# -*- coding: utf-8 -*- \n')
 file.write('import models \n')
 file.close()
 
 
-# Creamos el __manifest__.py
+# Create __manifest__.py
 file = open(name + '/__manifest__.py','w')
 file.write('# -*- coding: utf-8 -*-\n')
 file.write('##############################################################################\n')
 file.write('#\n')
-file.write('#    OpenERP, Open Source Management Solution\n')
-file.write('#    This module copyright (C) 2017 Marlon Falcón Hernandez\n')
-file.write('#    (<http://www.falconsolutions.cl>).\n')
-file.write('#\n')
-file.write('#    This program is free software: you can redistribute it and/or modify\n')
-file.write('#    it under the terms of the GNU Affero General Public License as\n')
-file.write('#    published by the Free Software Foundation, either version 3 of the\n')
-file.write('#    License, or (at your option) any later version.\n')
-file.write('#\n')
-file.write('#    This program is distributed in the hope that it will be useful,\n')
-file.write('#    but WITHOUT ANY WARRANTY; without even the implied warranty of\n')
-file.write('#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n')
-file.write('#    GNU Affero General Public License for more details.\n')
-file.write('#\n')
-file.write('#    You should have received a copy of the GNU Affero General Public License\n')
-file.write('#    along with this program.  If not, see <http://www.gnu.org/licenses/>.\n')
+file.write('#    Automatic creation of modules for Odoo \n')
 file.write('#\n')
 file.write('##############################################################################\n')
 file.write('{\n')
-file.write('    \'name\': \'' + name + ' MFH\',\n')
+file.write('    \'name\': \'' + name + ' Sumpurn\',\n')
 file.write('    \'version\': \'10.0.0.1.0\',\n')
-file.write('    \'author\': "Falcón Solutions, Marlon Falcón...",\n')
-file.write('    \'maintainer\': \'Falcon Solutions\',\n')
-file.write('    \'website\': \'http://www.falconsolutions.cl\',\n')
-file.write('    \'license\': \'AGPL-3\',\n')
+file.write('    \'author\': "Nihon Sumpurn Tsushin Giken...",\n')
+file.write('    \'maintainer\': \'Dr. Praveen Bhatia\',\n')
+file.write('    \'website\': \'http://www.sumpurn.com\',\n')
+file.write('    \'license\': \'Sumpurn runtime\',\n')
 file.write('    \'category\': \'account.payment\',\n')
-file.write('    \'summary\': \'Ejemplo de un módulo by FalconSolutions.\',\n')
+file.write('    \'summary\': \'Sumpurn automatic module builder\',\n')
 file.write('    \'depends\': [\'account\',\'account_accountant\'],\n')
 file.write('    \'description\': """\n')
-file.write('Modulo basado en FalconSolutions\n')
+file.write('Module base\n')
 file.write('===================================================== \n')
-file.write('Éste módulo permite selecionar \n')
+file.write('Selections for the module \n')
 file.write('""",\n')
 file.write('    \'demo\': [],\n')
 file.write('    \'test\': [],\n')
@@ -77,26 +62,26 @@ file.write('    \'auto_install\': False,\n')
 file.write('}\n')
 file.close()
 
-# Creamos el Modelo
+# Create the Model
 file = open(name + '/models/__init__.py','w')
 file.write('# -*- coding: utf-8 -*- \n')
 file.write('import '+name+' \n')
 file.close()
 
-# Creamos el Modelo
+# Create the Model
 file = open(name + '/models/'+name+'.py','w')
 file.write('# -*- coding: utf-8 -*- \n')
-file.write('# Part of Odoo. See LICENSE file for full copyright and licensing details. \n')
+file.write('# See LICENSE file for full copyright and licensing details. \n')
 file.write('from odoo import api, fields, models \n')
 file.write('from datetime import datetime \n')
 file.write('\n')
 file.write('class '+name+'(models.Model): \n')
 file.write('    _name = \'ej.'+name+'\' \n')
 arreglo = []
-for num in range(1,cant_campos+1):
-    fname = raw_input("Nombre del Campo:")
+for num in range( 1, noOfFields + 1 ):
+    fname = raw_input("Name of the field:")
     print "Char,Text,Boolean,Datetime,Integer"
-    ftipo = raw_input("Tipo de Campo:")
+    ftipo = raw_input("Type of field:")
     print "-----------------------------------"
     print ""
     print ""
@@ -106,11 +91,11 @@ for num in range(1,cant_campos+1):
 file.close()
 
 
-# Creamos el _views.xml
+# Create views _views.xml
 file = open(name + '/views/'+ name + '_view.xml','w')
 file.write('<?xml version="1.0" encoding="UTF-8"?> \n')
 file.write('<odoo> \n')
-file.write('<!-- Comentario en la Views --> \n')
+file.write('<!-- Structure of the view --> \n')
 file.write('     <record id="view_ej_' + name + '_form" model="ir.ui.view"> \n')
 file.write('        <field name="name">ej.' + name + '.form</field> \n')
 file.write('        <field name="model">ej.' + name + '</field> \n')
@@ -135,7 +120,7 @@ file.write('           </tree> \n')
 file.write('        </field> \n')
 file.write('    </record> \n')
 
-# Colocamos la acción
+# Structure of the actions
 file.write('    <record model="ir.actions.act_window" id="act_ej_' + name + '"> \n')
 file.write('        <field name="name">' + name + '</field> \n')
 file.write('        <field name="type">ir.actions.act_window</field> \n')
@@ -144,8 +129,8 @@ file.write('        <field name="view_type">form</field> \n')
 file.write('        <field name="view_mode">tree,form</field> \n')
 file.write('    </record> \n')
 
-# Colocamos el Menú
-file.write('<!--  Declaramos los menu --> \n')
+# Structure of the Menu
+file.write('<!--  Declare the Menus --> \n')
 file.write('<menuitem id="ej_' + name + '_menu" name="' + name.capitalize() + '" sequence="10"/> \n')
 file.write('<menuitem id="submenu_ej_' + name + '_menu" name="'+ name.capitalize() +'" sequence="10" parent="ej_' + name + '_menu"/> \n')
 file.write('<menuitem id="submenu_ej_' + name + '_action" name="'+ name.capitalize() + '" sequence="10" parent="submenu_ej_' + name + '_menu" action="act_ej_' + name + '"/> \n')
@@ -153,7 +138,7 @@ file.write('<menuitem id="submenu_ej_' + name + '_action" name="'+ name.capitali
 file.write('</odoo> \n')
 file.close()
 
-print "Se a creado el Modulo:" + name
+print "Following module has been created:" + name
 
 
 
